@@ -1,0 +1,70 @@
+.turn-table-bg {
+  width: 1em;
+  height: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.turn-table-body {
+  width: 1em;
+  height: 1em;
+}
+
+.turn-table-box {
+  margin: 0 auto;
+  position: relative;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.turn-table-box-items {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: no-repeat center top;
+  background-size: 100%;
+  color: #fff;
+}
+
+.turn-table-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 2;
+  background: url('../img/arrow-btn.png');
+  background-size: 100% 100%;
+  transform: translate3d(-50%, -50%, 0);
+}
+
+.prize-list {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  clip: rect(0 1em 1em 0.5em);
+  overflow: hidden;
+}
+
+.prize-list .prize-item {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  font-size: 0.1em;
+  clip: rect(0 5em 10em 0);
+  border-radius: 50%;
+  box-shadow: inset 1px 1px 5px #000000;
+}
+
+.prize-info-item {
+  display: inline-block;
+  height: 50%;
+  transform-origin: bottom;
+}

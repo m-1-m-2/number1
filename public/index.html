@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="screen-orientation" content="portrait">
+  <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+  <link rel="manifest" href="./mini.webmanifest.json">
+  <title>
+    <%= htmlWebpackPlugin.options.title %>
+  </title>
+  <style>
+    html,
+    body,
+    #app {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+      width: 100%;
+    }
+
+    .__spinner-container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .__spinner {
+      position: relative;
+      width: 68px;
+      height: 68px;
+      background-color: #41b883;
+      animation: cube-shadow-spinner 1.8s cubic-bezier(0.75, 0, 0.5, 1) infinite;
+    }
+
+    @keyframes cube-shadow-spinner {
+      50% {
+        border-radius: 50%;
+        transform: scale(0.5) rotate(360deg);
+      }
+
+      100% {
+        transform: scale(1) rotate(720deg);
+      }
+    }
+
+    .spinner {
+      /* margin: 300px auto; */
+      width: 50px;
+      height: 60px;
+      text-align: center;
+      font-size: 10px;
+    }
+
+    .spinner>div {
+      background: #D04F45;
+      height: 100%;
+      width: 6px;
+      display: inline-block;
+      border-radius: 10px;
+      -webkit-animation: stretchDelay 1.2s infinite ease-in-out;
+      animation: stretchDelay 1.2s infinite ease-in-out;
+    }
+
+    .spinner .rect2 {
+      -webkit-animation-delay: -1.1s;
+      animation-delay: -1.1s;
+    }
+
+    .spinner .rect3 {
+      -webkit-animation-delay: -1.0s;
+      animation-delay: -1.0s;
+    }
+
+    .spinner .rect4 {
+      -webkit-animation-delay: -0.9s;
+      animation-delay: -0.9s;
+    }
+
+    .spinner .rect5 {
+      -webkit-animation-delay: -0.8s;
+      animation-delay: -0.8s;
+    }
+
+    @-webkit-keyframes stretchDelay {
+
+      0%,
+      40%,
+      100% {
+        -webkit-transform: scaleY(0.4)
+      }
+
+      20% {
+        -webkit-transform: scaleY(1.0)
+      }
+    }
+
+    @keyframes stretchDelay {
+
+      0%,
+      40%,
+      100% {
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+      }
+
+      20% {
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+      }
+    }
+
+    .add_button_tohome {
+      display: none;
+      position: fixed;
+      bottom: 60px;
+      left: 50%;
+      z-index: 100;
+      transform: translateX(-50%);
+      background: #378ef5;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 20px;
+      font-size: 15px;
+      line-height: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 16px rgb(0 0 0 / 30%);
+      border: none;
+    }
+
+    /* @media (min-width: 640px) and (min-height: 640px) {
+      #app {
+        overflow: hidden;
+        position: fixed !important;
+        width: 375px;
+        margin: auto;
+        height: 100%;
+        overflow-y: scroll;
+      }
+    } */
+  </style>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VMCXQSH53J"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag () { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  // gtag('config', 'G-VMCXQSH53J', { 'page_path': to.fullPath });
+</script>
+
+<body>
+  <noscript>
+    <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled.
+        Please enable it to continue.</strong>
+  </noscript>
+  <div id="app">
+    <!-- <div class="__spinner-container">
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </div> -->
+  </div>
+  <button class="add_button_tohome add-button" style="display: block;"><span>Add To HomeScreen</span></button>
+  <!-- built files will be auto injected -->
+</body>
+<script>
+  window.onload = function () {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('./index.js')
+        .then(() => { console.log('Service Worker Registered'); });
+    }
+
+    let deferredPrompt;
+    const addBtn = document.querySelector('.add-button');
+    addBtn.style.display = 'none';
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      // Prevent Chrome 67 and earlier from automatically showing the prompt\
+      e.preventDefault();
+      // Stash the event so it can be triggered later.
+      deferredPrompt = e;
+      // Update UI to notify the user they can add to home screen\
+      addBtn.style.display = 'block';
+
+      addBtn.addEventListener('click', () => {
+        // hide our user interface that shows our A2HS button\
+        addBtn.style.display = 'none';
+        // Show the prompt
+        deferredPrompt.prompt();
+        // Wait for the user to respond to the prompt
+        deferredPrompt.userChoice.then((choiceResult) => {
+          if (choiceResult.outcome === 'accepted') {
+            console.log('User accepted the A2HS prompt');
+          } else {
+            console.log('User dismissed the A2HS prompt');
+          }
+          deferredPrompt = null;
+        });
+      });
+    });
+  }
+</script>
+
+<script async src="./NodePlayer.min.js"></script>
+
+</html>

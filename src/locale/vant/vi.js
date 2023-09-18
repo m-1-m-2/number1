@@ -1,0 +1,80 @@
+export default {
+  name: 'tên',
+  tel: 'Điện thoại',
+  save: 'Save',
+  confirm: 'Xác nhận',
+  cancel: 'Hủy bỏ',
+  delete: 'Xóa',
+  complete: 'Hoàn thành',
+  loading: 'Đang tải...',
+  telEmpty: 'Vui lòng điền vào số điện thoại',
+  nameEmpty: 'Vui lòng điền vào tên',
+  nameInvalid: 'Tên không hợp lệ',
+  confirmDelete: 'Bạn có chắc chắn muốn xóa không?',
+  telInvalid: 'Số điện thoại không đúng định dạng',
+  vanCalendar: {
+    end: 'Kết thúc',
+    start: 'Bắt ​​đầu',
+    title: 'Lịch',
+    startEnd: 'Bắt ​​đầu/Kết thúc',
+    weekdays: ['Chủ nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'],
+    monthTitle: (year, month) => `${year}/${month}`,
+    rangePrompt: (maxRange) => `Chọn không quá ${maxRange} ngày`,
+  },
+  vanCascader: {
+    select: 'Chọn',
+  },
+  vanContactCard: {
+    addText: 'Thêm thông tin liên hệ',
+  },
+  vanContactList: {
+    addText: 'Thêm liên hệ mới',
+  },
+  vanPagination: {
+    prev: 'Trước đó',
+    next: 'Tiếp theo',
+  },
+  vanPullRefresh: {
+    pulling: 'Kéo để làm mới...',
+    loosing: 'Loose to refresh...',
+  },
+  vanSubmitBar: {
+    label: 'Tổng:',
+  },
+  vanCoupon: {
+    unlimited: 'Không giới hạn',
+    discount: (discount) => `${discount * 10}% off`,
+    condition: (condition) => `Ít nhất ${condition}`,
+  },
+  vanCouponCell: {
+    title: 'Phiếu giảm giá',
+    tips: 'Không có phiếu giảm giá',
+    count: (count) => `Bạn có ${count} phiếu giảm giá`,
+  },
+  vanCouponList: {
+    empty: 'Không có phiếu giảm giá',
+    exchange: 'Trao đổi',
+    close: 'Đóng',
+    enable: 'Có sẵn',
+    disabled: 'Không khả dụng',
+    placeholder: 'Mã phiếu thưởng',
+  },
+  vanAddressEdit: {
+    area: 'Khu vực',
+    postal: 'Bưu điện',
+    areaEmpty: 'Vui lòng chọn khu vực nhận hàng',
+    addressEmpty: 'Địa chỉ không được để trống',
+    postalEmpty: 'Mã bưu chính sai',
+    defaultAddress: 'Đặt làm địa chỉ mặc định',
+    telPlaceholder: 'Điện thoại',
+    namePlaceholder: 'Tên',
+    areaPlaceholder: 'Khu vực',
+  },
+  vanAddressEditDetail: {
+    label: 'Địa chỉ',
+    placeholder: 'Địa chỉ',
+  },
+  vanAddressList: {
+    add: 'Thêm địa chỉ mới',
+  },
+};

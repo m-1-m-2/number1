@@ -1,0 +1,10 @@
+export { default as lottery8 } from "./lottery8";  // 一分六合彩
+export { default as lottery10 } from "./lottery10";  // 百人牛牛
+export { default as lottery11 } from "./lottery11";  // 一分时时彩
+export { default as lottery14 } from "./lottery14";  // 一分赛车
+export { default as lottery26 } from "./lottery26";  // 一分快三
+export { default as lottery27 } from "./lottery27";  // 三分快三
+export { default as lottery28 } from "./lottery28";  // 百家乐
+export { default as lottery29 } from "./lottery29";  // 炸金花
+export { default as lottery30 } from "./lottery30";  // 轮盘
+export { default as lottery31 } from "./lottery31";  // 龙虎

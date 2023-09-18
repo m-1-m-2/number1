@@ -1,0 +1,578 @@
+import "common.proto";
+package s2c;
+
+message SystemNot
+{
+   message Msg { 
+      required uint32   action  = 1;
+      required string   ct      = 2;
+      optional string   uname   = 3;
+      required uint32   msgtype = 4;
+   } 
+
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message LiveConnect {
+   message Msg { 
+         required uint32   action  = 1;
+         required uint32   msgtype = 2;
+         optional uint32   pkuid   = 3;
+         optional string   pkpull  = 4;
+         required uint32   uid     = 5;
+         optional string   uname   = 6;
+         
+   }
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message LivePK {
+   message Msg { 
+         required uint32   action  = 1;
+         required uint32   msgtype = 2;
+         optional uint32   pkuid   = 3;
+         required uint32   uid     = 4;
+         optional string   uname   = 5;
+         
+   }
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message requestFans {
+   message UserInfo {
+      required uint32 id         = 1;
+      required string avatar     = 2;
+      required uint32 guard_type = 3;
+      required uint32 level      = 4;
+   }
+   message InfoStruct {
+      repeated UserInfo   list = 1;
+   }
+   message Fans {
+      required uint32     code = 1;
+      required InfoStruct info = 2;
+      optional string     msg  = 3;
+   }
+   message Msg { 
+         optional uint32   action  = 1;
+         required uint32   msgtype = 2;
+         optional Fans     ct      = 3;
+   }
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message SendMsg
+{ 
+   message CTStruct {
+      required uint32 id            = 1;
+      required string user_nicename = 2;
+      optional string avatar        = 3;
+      optional string avatar_thumb  = 4;
+      required uint32 level         = 5;
+      required uint32 usertype      = 6;
+      required uint32 vip_type      = 7;
+      optional uint32 guard_type    = 8;
+      optional string liangname     = 9;
+      optional uint32 car_id        = 10;
+      optional string car_swf       = 11;
+      optional string car_swftime   = 12;
+      optional string car_words     = 13;
+      optional bool   isAnchor      = 14;
+      optional string heart         = 15;
+      optional string king_icon     = 16;
+   }
+   
+   message Msg { 
+      required uint32   action  = 1;
+      optional CTStruct ct      = 2;
+      required uint32   msgtype = 3;
+      optional string   content = 4;
+      optional string   uname   = 5;
+      optional string   lang    = 6;
+   } 
+
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message StartEndLive
+{
+   message Msg { 
+      required uint32   action  = 1;
+      required string   ct      = 2;
+      optional string   uname   = 3;
+      required uint32   msgtype = 4;
+   } 
+
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message disconnect {
+   message CTStruct {
+      required uint32 id            = 1;
+      required string user_nicename = 2;
+      required string avatar        = 3;
+      required uint32 level         = 4;
+   }
+   message Msg { 
+      required uint32   action  = 1;
+      required CTStruct ct      = 2;
+      required uint32   uid     = 3;
+      optional string   uname   = 4;
+      required uint32   msgtype = 5;
+   } 
+
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+
+message kyGame {
+   message Msg { 
+      required uint32   action     = 1;
+      required string   ct         = 2;
+      required uint32   msgtype    = 3;
+      required string   gamePlat   = 4;
+      required uint32   gameKindID = 5;
+   } 
+
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message platGame {
+   message Msg { 
+      required uint32   action     = 1;
+      required string   ct         = 2;
+      required uint32   msgtype    = 3;
+      required string   gamePlat   = 4;
+      required string   gameKindID = 5;
+      required string   ext_1      = 6;
+   } 
+
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message TranslateContent {
+   message Msg { 
+      required uint32   action     = 1;
+      optional string   ct         = 2;
+      required uint32   msgtype    = 3;
+      optional string   content    = 4;
+   } 
+
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message LotteryAward {
+   message Msg { 
+      required uint32   action      = 1;
+      required float    award_money = 2;
+      required uint32   msgtype     = 3;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message LotteryBarrage {
+   message CTStruct {
+      required string nickname     = 1;
+      required string lotteryName  = 2;
+      required string way          = 3;
+      required string totalmoney   = 4;
+      required uint32 showType     = 5;
+   }
+   message Barrage {
+      required CTStruct ct          = 1;
+      required uint32   lt          = 2;
+      required uint32   lid         = 3;
+      required uint32   st          = 4;
+   }
+   message Msg { 
+      required uint32   action      = 1;
+      repeated Barrage  barrage_arr = 2;
+      required uint32   msgtype     = 3;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message LotteryBet {
+   message CTStruct {
+      required string nickname     = 1;
+      required string lotteryName  = 2;
+      required string totalmoney   = 3;
+   }
+   message Msg { 
+      required uint32   action      = 1;
+      required CTStruct ct          = 2;
+      required uint32   msgtype     = 3;
+      required uint32   lotteryType = 4;
+      required string   optionName  = 5;
+      required string   way         = 6;
+      required string   money       = 7;
+      required uint64   issue       = 8;
+      optional string   optionName_st = 9;
+      optional string   way_st      = 10;
+      optional uint32   uid         = 11;
+      optional bool     chat_self_show = 12;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message LotteryOpenAward {
+   message NiuStruct {
+      required string   red_niu         = 1;
+      required string   blue_niu        = 2;
+   }
+   message BaiJiaLeStruct {
+      required uint32   zhuang_dian     = 1; // 如:1
+      required uint32   xian_dian       = 2; // 如:1
+      required string   zhuang_dian_str = 3; // 如:1点
+      required string   xian_dian_str   = 4; // 如:1点
+      required uint32   whoWin          = 5; // 0:庄胜 1:闲胜 2:和
+      required string   zhuangxian_str  = 6; // 庄家1点 vs 闲家2点
+   }
+   message ZhaJinHuaStruct {
+      required uint32   whoWin          = 1; // 0:玩家一 1:玩家二 2:玩家三
+      repeated uint32   pai_type        = 2; // 1:高牌 2:对子 3:顺子 4:同花 5:同花顺 6:三条
+      repeated string   pai_type_str    = 3; // (多语言文本)高牌 对子 顺子 同花 同花顺 三条
+   }
+   message LongHuStruct {
+      required uint32   whoWin           = 1; // 0:龙 1:虎 2:和
+      required uint32   dragon_dian      = 2; // 如:1
+      required string   dragon_dian_str  = 3; // 如:1点
+      required uint32   tiger_dian       = 4; // 如:1
+      required string   tiger_dian_str   = 5; // 如:1点
+      required string   dragon_tiger_str = 6; // 龙:{0} vs 虎:{1}
+   }
+   message Msg { 
+      required uint32      action         = 1;
+      required string      ct             = 2;
+      required uint32      msgtype        = 3;
+      required uint32      lotteryType    = 4;
+      required string      result         = 5;
+      required string      name           = 6;
+      required uint64      issue          = 7;
+      optional string      sum_result_str = 8;
+      optional NiuStruct   niu            = 9;
+      repeated string      winWays        = 10;
+      optional BaiJiaLeStruct bjl         = 11;
+      optional ZhaJinHuaStruct zjh        = 12;
+      optional LongHuStruct lh            = 13;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message LotteryDividend {
+   message CTStruct {
+      required string nickname     = 1;
+      required string lotteryName  = 2;
+      required string totalmoney   = 3;
+      required string from_name    = 4;
+   }
+   message Msg { 
+      required uint32   action    = 1;
+      required CTStruct ct        = 2;
+      required uint32   msgtype   = 3;
+      required uint32   from_uid  = 4;
+      optional string   from_name = 5;
+   } 
+
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message MoneyChange {
+   message Msg { 
+      required uint32   action  = 1;
+      required string   ct      = 2;
+      required uint32   msgtype = 3;
+      required uint32   issue   = 4;
+      required float    money   = 5;
+   } 
+
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message LotteryProfit {
+   message CTStruct {
+      required string nickname     = 1;
+      required string lotteryName  = 2;
+   }
+   message Msg { 
+      required uint32   action  = 1;
+      required CTStruct ct      = 2;
+      required uint32   msgtype = 3;
+      required uint32   uid     = 4;
+      required string   winWay  = 5;
+      required uint32   profit  = 6;
+   } 
+
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message LotterySync {
+   message LotteryInfo {
+      required string name        = 1;
+      required string logo        = 2;
+      required uint32 time        = 3;
+      required uint32 sealingTim  = 4;
+      required uint64 issue       = 5;
+      optional uint32 stopOrSell  = 6;
+      optional string stopMsg     = 7;
+      required uint32 lotteryType = 8;
+      required uint32 serTime     = 9;
+   }
+   message Msg { 
+      required uint32        action      = 1;
+      required string        ct          = 2;
+      required uint32        msgtype     = 3;
+      required uint32        lotteryType = 4;
+      required LotteryInfo   lotteryInfo = 5;
+      
+   } 
+
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message SendContactInfo {
+   message Msg { 
+      required uint32        action      = 1;
+      required string        ct          = 2;
+      required uint32        msgtype     = 3;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message SendRed {
+   message Msg { 
+      required uint32        action      = 1;
+      required string        ct          = 2;
+      required uint32        msgtype     = 3;
+      optional uint32        touid       = 4;
+      optional uint32        ugood       = 5;
+      required uint32        uid         = 6;
+      optional string        name        = 7;
+      required string        uname       = 8;
+      optional string        equipment   = 9;
+      optional uint32        roomnum     = 10;
+      optional uint32        level       = 11;
+      optional string        evensend    = 12;
+      optional string        uhead       = 13;
+      optional uint32        vip_type    = 14;
+      optional string        liangname   = 15;
+      optional bool          isAnchor    = 16;
+   }
+
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message SendGift {
+   message GiftInfo {
+      required uint32        uid        = 1;
+      required uint32        giftid     = 2;
+      required uint32        type       = 3;
+      required uint32        giftcount  = 4;
+      required uint32        totalcoin  = 5;
+      required string        giftname   = 6;
+      required string        gifticon   = 7;
+      required uint32        swftime    = 8;
+      required uint32        swftype    = 9;
+      required string        swf        = 10;
+      required uint32        level      = 11;
+      required uint32        coin       = 12;
+      required uint32        votestotal = 13;
+   }
+   message Msg { 
+      required uint32        action      = 1;
+      required GiftInfo      ct          = 2;
+      required uint32        msgtype     = 3;
+      required uint32        uid         = 4;
+      required string        uname       = 5;
+      required string        equipment   = 6;
+      required uint32        roomnum     = 7;
+      required uint32        level       = 8;
+      required string        evensend    = 9;
+      required string        uhead       = 10;
+      required uint32        vip_type    = 11;
+      required string        liangname   = 12;
+      optional uint32        ifpk        = 13;
+      optional uint32        pkuid1      = 14;
+      optional uint32        pkuid2      = 15;
+      optional uint32        pktotal1    = 16;
+      optional uint32        pktotal2    = 17;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message SendBarrage {
+   message CTStruct {
+      required uint32        uid        = 1;
+      required string        content    = 2;
+      required uint32        giftid     = 3;
+      required uint32        giftcount  = 4;
+      required uint32        totalcoin  = 5;
+      required string        giftname   = 6;
+      required string        gifticon   = 7;
+      required uint32        level      = 8;
+      required uint32        coin       = 9;
+      required uint32        votestotal = 10;
+   }
+   message Msg { 
+      required uint32        action      = 1;
+      required uint32        msgtype     = 2;
+      required uint32        level       = 3;
+      required string        uname       = 4;
+      required uint32        uid         = 5;      
+      required string        uhead       = 6;
+      required CTStruct      ct          = 7;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message changeLive {
+   message Msg { 
+      optional uint32        action      = 1;
+      optional uint32        msgtype     = 2;
+      required string        type_val    = 3;
+      optional string        type        = 4;
+      optional string        roomType    = 5;
+      optional string        msg         = 6;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message updateVotes {
+   message Msg { 
+      required uint32        action      = 1;
+      required uint32        msgtype     = 2;
+      required float         votes       = 3;
+      required uint32        uid         = 4;
+      required uint32        isfirst     = 5;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message ShutUpUser {
+   message Msg { 
+      required uint32        action      = 1;
+      required uint32        msgtype     = 2;
+      required string        ct          = 3;
+      required uint32        uid         = 4;
+      required uint32        touid       = 5;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message setAdmin {
+   message Msg { 
+      required uint32        action      = 1;
+      required uint32        msgtype     = 2;
+      required string        ct          = 3;
+      required uint32        uid         = 4;
+      required string        uname       = 5;
+      required uint32        touid       = 6;
+      required string        touname     = 7;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message BuyGuard {
+   message Msg { 
+      required uint32        action      = 1;
+      required uint32        msgtype     = 2;
+      optional string        ct          = 3;
+      required uint32        uid         = 4;
+      optional string        uname       = 5;
+      required string        uhead       = 6;
+      required uint32        votestotal  = 7;
+      required uint32        guard_nums  = 8;
+      optional uint32        guard_type  = 9;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message KickUser {
+   message Msg { 
+      required uint32        action      = 1;
+      required uint32        msgtype     = 2;
+      required string        ct          = 3;
+      required uint32        uid         = 4;
+      required uint32        touid       = 5;
+      optional uint32        showid      = 6;
+      optional string        uname       = 7;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message light {
+   message Msg { 
+      required uint32        action      = 1;
+      required uint32        msgtype     = 2;
+      optional string        ct          = 3;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
+
+message stopLive {
+   message Msg { 
+      required uint32        action      = 1;
+      required uint32        msgtype     = 2;
+   } 
+   required uint32    retcode = 1;
+   optional string    retmsg  = 2;
+   required Msg       msg     = 3;
+}
